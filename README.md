@@ -28,7 +28,10 @@ Conheça os principais conceitos e implementações de sua próxima API REST com
 
 ## <a name="parte1">1 - Seção 1: Módulo 0</a>
 
-
+- 1 Introdução
+- 2 Quem sou eu?
+- 3 Ambiente & Links Importantes
+- 4 Importante - Links
 
 [Voltar ao Índice](#indice)
 
