@@ -40,7 +40,47 @@ Conheça os principais conceitos e implementações de sua próxima API REST com
 
 ## <a name="parte2">2 - Seção 2: WebServices, APIs, REST Conceitos</a>
 
+- 5 Protocolo HTTP
 
+  - Verbos
+    - GET
+    - PUT
+    - POST
+    - PATCH
+    - DELET
+    - OPTIONS
+    - ...
+
+  - Status code
+    - 200: success
+    - 300: Redirect
+    - 400: Client Error
+    - 500: Server Error
+
+- 6 O que são WebServices?
+ 
+![Webservices](img/webservices_1.png)
+
+  - SOAP - WSDL
+  - REST
+  - RCP
+  - GRAPHQL
+  
+- 7 Webservices X APIs
+
+![API](img/api_1.png)
+
+- 8 REST: O que é?
+
+![REST](img/rest_1.png)
+
+![REST](img/rest_2.png)
+
+![REST](img/rest_3.png)
+
+- 9 Conhecendo mais o REST por meio do consumo de uma API REST
+
+![](img/api-rest-1.png)
 
 [Voltar ao Índice](#indice)
 
