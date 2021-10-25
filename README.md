@@ -89,6 +89,36 @@ Conheça os principais conceitos e implementações de sua próxima API REST com
 
 ## <a name="parte3">3 - Seção 3: Mão na Massa: Primeira API REST</a>
 
+- 10 Iniciando API com Laravel
+
+  - [api-01-app](api-01-app)
+
+- [api-01-app/routes/api.php](api-01-app/routes/api.php)
+
+```php
+Route::get('/test', function (Request $request){
+
+    //dd($request->headers->get('Authorization'));
+    //dd($request->headers->all());
+
+    $response = new \Illuminate\Http\Response(
+        json_encode(['msg' => 'Minha primeira Resposta de API']));
+    $response->header('Content-Type', 'application/json');
+
+    return $response;
+});
+
+```
+
+- 11 Configurando base para API
+
+- 12 Criando Primeiro Endpoint
+
+- 13 Criando & Recuperando Produto
+
+- 14 Atualizando Produto
+
+- 15 Removendo Produto
 
 
 [Voltar ao Índice](#indice)
