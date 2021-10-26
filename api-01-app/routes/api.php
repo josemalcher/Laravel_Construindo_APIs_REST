@@ -18,7 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('/test', function (Request $request){
+Route::get('/test', function (Request $request) {
 
     //dd($request->headers->get('Authorization'));
     //dd($request->headers->all());
@@ -29,8 +29,6 @@ Route::get('/test', function (Request $request){
 
     return $response;
 });
-
-// Products Route
-Route::get('products', function () {
-    return \App\Models\Product::all();
+Route::namespace('App\Http\Controllers\Api')->group(function () {
+    Route::get('/products', 'ProductController@index');
 });
