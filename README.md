@@ -190,6 +190,104 @@ Route::get('/test', function (Request $request){
 
 - 17 Controllers como Recurso
 
+```
+$ php artisan make:controller UserController --resource --api
+Controller created successfully.
+```
+
+```php
+class UserController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        //
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        //
+    }
+}
+```
+
+```
+php artisan route:list
++--------+-----------+----------------------+--------------+------------------------------------------------------------+------------+
+| Domain | Method    | URI                  | Name         | Action                                                     | Middleware |
++--------+-----------+----------------------+--------------+------------------------------------------------------------+------------+
+|        | GET|HEAD  | /                    |              | Closure                                                    | web        |
+|        | GET|HEAD  | api/products         |              | App\Http\Controllers\Api\ProductController@index           | api        |
+|        | POST      | api/products         |              | App\Http\Controllers\Api\ProductController@save            | api        |
+|        | PUT       | api/products         |              | App\Http\Controllers\Api\ProductController@update          | api        |
+|        | PATCH     | api/products         |              | App\Http\Controllers\Api\ProductController@update          | api        |
+|        | GET|HEAD  | api/products/{id}    |              | App\Http\Controllers\Api\ProductController@show            | api        |
+|        | DELETE    | api/products/{id}    |              | App\Http\Controllers\Api\ProductController@delete          | api        |
+|        | GET|HEAD  | api/test             |              | Closure                                                    | api        |
+|        | GET|HEAD  | api/user             | user.index   | App\Http\Controllers\Api\UserController@index              | api        |
+|        | POST      | api/user             | user.store   | App\Http\Controllers\Api\UserController@store              | api        |
+|        | GET|HEAD  | api/user/create      | user.create  | App\Http\Controllers\Api\UserController@create             | api        |
+|        | GET|HEAD  | api/user/{user}      | user.show    | App\Http\Controllers\Api\UserController@show               | api        |
+|        | PUT|PATCH | api/user/{user}      | user.update  | App\Http\Controllers\Api\UserController@update             | api        |
+|        | DELETE    | api/user/{user}      | user.destroy | App\Http\Controllers\Api\UserController@destroy            | api        |
+|        | GET|HEAD  | api/user/{user}/edit | user.edit    | App\Http\Controllers\Api\UserController@edit               | api        |
+|        | GET|HEAD  | sanctum/csrf-cookie  |              | Laravel\Sanctum\Http\Controllers\CsrfCookieController@show | web        |
++--------+-----------+----------------------+--------------+------------------------------------------------------------+------------+
+
+
+```
+
+```php
+    public function index()
+    {
+        return response()->json(['message'=> __METHOD__]); // testar métodos
+    }
+```
+
 - 18 Eloquent Api Resource
 
 - 19 Eloquent Api Resource pt. 2
