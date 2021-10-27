@@ -128,6 +128,73 @@ Route::get('/test', function (Request $request){
 
 ## <a name="parte4">4 - Seção 4: Laravel: Recursos para APIs</a>
 
+- 16 Introdução
+
+```php
+ public function index()
+    {
+        $products = $this->product->paginate(1);
+
+        return response()->json($products);
+    }
+```
+
+```json
+{
+  "current_page": 1,
+  "data": [
+    {
+      "id": 3,
+      "name": "Ed Produto0001 Editadp",
+      "prive": 59.99,
+      "descripption": "Descrição do produto 0001 Editado",
+      "slug": "produto0001Editado",
+      "created_at": "2021-10-26T15:58:03.000000Z",
+      "updated_at": "2021-10-26T16:00:54.000000Z"
+    }
+  ],
+  "first_page_url": "http://localhost/api/products?page=1",
+  "from": 1,
+  "last_page": 2,
+  "last_page_url": "http://localhost/api/products?page=2",
+  "links": [
+    {
+      "url": null,
+      "label": "&laquo; Previous",
+      "active": false
+    },
+    {
+      "url": "http://localhost/api/products?page=1",
+      "label": "1",
+      "active": true
+    },
+    {
+      "url": "http://localhost/api/products?page=2",
+      "label": "2",
+      "active": false
+    },
+    {
+      "url": "http://localhost/api/products?page=2",
+      "label": "Next &raquo;",
+      "active": false
+    }
+  ],
+  "next_page_url": "http://localhost/api/products?page=2",
+  "path": "http://localhost/api/products",
+  "per_page": 1,
+  "prev_page_url": null,
+  "to": 1,
+  "total": 2
+}
+```
+
+- 17 Controllers como Recurso
+
+- 18 Eloquent Api Resource
+
+- 19 Eloquent Api Resource pt. 2
+
+- 20 Autenticação Básica
 
 
 [Voltar ao Índice](#indice)
