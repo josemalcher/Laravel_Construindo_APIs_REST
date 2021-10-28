@@ -290,6 +290,37 @@ php artisan route:list
 
 - 18 Eloquent Api Resource
 
+```
+$ php artisan make:resource ProductResource
+Resource created successfully.
+
+```
+
+- [api-01-app/app/Http/Resources/ProductResource.php](api-01-app/app/Http/Resources/ProductResource.php)
+
+```php
+public function toArray($request)
+    {
+        // return parent::toArray($request);
+        /* return [
+            'name' => $this->name,
+            'prive'=> $this->prive,
+            'slug' => $this->slug
+        ]; */
+        return $this->resource->toArray();
+    }
+```
+
+- [api-01-app/app/Http/Controllers/Api/ProductController.php](api-01-app/app/Http/Controllers/Api/ProductController.php)
+
+```php
+    public function show($id)
+    {
+        $product = $this->product->find($id);
+        // return response()->json(['message' => __METHOD__]);
+        return new ProductResource($product);
+    }
+```
 - 19 Eloquent Api Resource pt. 2
 
 - 20 Autenticação Básica
