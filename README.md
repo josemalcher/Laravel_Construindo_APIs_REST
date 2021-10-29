@@ -344,6 +344,40 @@ Resource collection created successfully.
 
 - 20 Autenticação Básica
 
+```
+$ php artisan make:seeder UsersTableSeeder
+Seeder created successfully.
+
+```
+
+- [api-01-app/database/seeders/UsersTableSeeder.php](api-01-app/database/seeders/UsersTableSeeder.php)
+
+```php
+ public function run()
+    {
+        factory(\App\User::class, 1)->create();
+    }
+```
+
+- [api-01-app/database/seeders/DatabaseSeeder.php](api-01-app/database/seeders/DatabaseSeeder.php)
+
+```php
+ public function run()
+    {
+         \App\Models\User::factory(10)->create();
+    }
+```
+
+```
+$ php artisan db:seed
+Database seeding completed successfully.
+
+```
+
+![](/img/seed-db.png)
+
+
+
 
 [Voltar ao Índice](#indice)
 
