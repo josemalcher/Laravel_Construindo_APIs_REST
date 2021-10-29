@@ -323,6 +323,25 @@ public function toArray($request)
 ```
 - 19 Eloquent Api Resource pt. 2
 
+```
+$ php artisan make:resource ProductCollection
+Resource collection created successfully.
+
+```
+
+![](img/resource-collection.png)
+
+- [api-01-app/app/Providers/AppServiceProvider.php](api-01-app/app/Providers/AppServiceProvider.php)
+
+```php
+    public function boot()
+    {
+        JsonResource::withoutWrapping();
+        JsonResource::wrap('view');
+    }
+}
+```
+
 - 20 Autenticação Básica
 
 
