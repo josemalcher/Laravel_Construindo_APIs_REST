@@ -399,6 +399,24 @@ Seeder created successfully.
 
 - 22 Iniciando Filtragem de Campos
 
+- [api-01-app/app/Http/Controllers/Api/ProductController.php](api-01-app/app/Http/Controllers/Api/ProductController.php)
+
+```php
+ public function index(Request $request)
+    {
+        $products = $this->product;
+
+        if ($request->has('fields')) {
+            $field = $request->get('fields');
+            $products = $products->selectRaw($field);
+        }
+
+        //$products = $this->product->paginate(4);
+        //return response()->json($products);
+        return new ProductCollection($products->paginate(5));
+    }
+```
+
 - 23 Adicionando Condições na Filtragem
 
 - 24 Melhorando Condições nas Filtragens
