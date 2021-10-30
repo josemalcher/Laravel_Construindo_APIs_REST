@@ -386,6 +386,28 @@ Database seeding completed successfully.
 
 ## <a name="parte5">5 - Seção 5: APIs REST: Filtros</a>
 
+- 21 Introdução
+
+```
+$ php artisan make:factory ProductFactory
+Factory created successfully.
+
+$ php artisan make:seeder ProductTableSeeder
+Seeder created successfully.
+
+```
+
+- 22 Iniciando Filtragem de Campos
+
+- 23 Adicionando Condições na Filtragem
+
+- 24 Melhorando Condições nas Filtragens
+
+- 25 Melhorias nos Filtros Criando Repository
+
+- 26 Melhorias no Repository
+
+- 27 Criando AbstractRepository
 
 
 [Voltar ao Índice](#indice)
