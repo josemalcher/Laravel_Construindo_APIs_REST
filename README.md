@@ -419,7 +419,7 @@ Seeder created successfully.
 
 - 23 Adicionando Condições na Filtragem
 
-- []()
+- [api-01-app/app/Http/Controllers/Api/ProductController.php](api-01-app/app/Http/Controllers/Api/ProductController.php)
 
 ```
 public function index(Request $request)
@@ -446,6 +446,37 @@ public function index(Request $request)
 ```
 
 - 24 Melhorando Condições nas Filtragens
+
+- [Http/Controllers/Api/ProductController.php](Http/Controllers/Api/ProductController.php)
+
+```php
+ public function index(Request $request)
+    {
+        $products = $this->product;
+
+        if ($request->has('conditions')) {
+            $expressions = explode(';', $request->get('conditions'));
+            foreach ($expressions as $e) {
+                $exp = explode(':', $e);
+                $products = $products->where($exp[0], $exp[1], $exp[2]);
+            }
+        }
+
+        if ($request->has('fields')) {
+            $fields = $request->get('fields');
+            $products = $products->selectRaw($fields);
+        }
+
+        //$products = $this->product->paginate(4);
+        //return response()->json($products);
+        return new ProductCollection($products->paginate(5));
+    }
+
+```
+
+```
+http://localhost/api/products?fields=id,name,prive&conditions=name:like:%Produto%
+```
 
 - 25 Melhorias nos Filtros Criando Repository
 
