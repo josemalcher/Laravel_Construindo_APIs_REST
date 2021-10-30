@@ -419,6 +419,32 @@ Seeder created successfully.
 
 - 23 Adicionando Condições na Filtragem
 
+- []()
+
+```
+public function index(Request $request)
+    {
+        $products = $this->product;
+
+        if ($request->has('conditions')) {
+            $expressions = explode(';', $request->get('conditions'));
+            foreach ($expressions as $e) {
+                $exp = explode('=', $e);
+                $products = $products->where($exp[0], $exp[1]);
+            }
+        }
+
+        if ($request->has('fields')) {
+            $fields = $request->get('fields');
+            $products = $products->selectRaw($fields);
+        }
+
+        //$products = $this->product->paginate(4);
+        //return response()->json($products);
+        return new ProductCollection($products->paginate(5));
+    }
+```
+
 - 24 Melhorando Condições nas Filtragens
 
 - 25 Melhorias nos Filtros Criando Repository
