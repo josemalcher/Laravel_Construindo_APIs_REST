@@ -484,6 +484,66 @@ http://localhost/api/products?fields=id,name,prive&conditions=name:like:%Produto
 
 - 27 Criando AbstractRepository
 
+```php
+class AbstractRepository
+{
+    /**
+     * @var Model
+     */
+    private $model;
+
+    public function __construct(Model $model)
+    {
+        $this->model = $model;
+    }
+
+    public function selectCoditions($coditions)
+    {
+        $expressions = explode(';', $coditions);
+        foreach($expressions as $e) {
+            $exp = explode(':', $e);
+
+            $this->model = $this->model->where($exp[0], $exp[1], $exp[2]);
+        }
+    }
+
+    public function selectFilter($filters)
+    {
+        $this->model = $this->model->selectRaw($filters);
+    }
+
+    public function getResult()
+    {
+        return $this->model;
+    }
+}
+```
+
+```php
+class ProductRepository extends AbstractRepository
+{
+}
+```
+
+```php
+public function index(Request $request)
+    {
+        $products = $this->product;
+        $productRespository = new ProductRepository($products);
+
+        if($request->has('coditions')) {
+            $productRespository->selectCoditions($request->get('coditions'));
+        }
+
+        if($request->has('fields')) {
+            $productRespository->selectFilter($request->get('fields'));
+        }
+
+        //return response()->json($products);
+        return new ProductCollection($productRespository->getResult()->paginate(10));
+    }
+```
+
 
 [Voltar ao Índice](#indice)
 
