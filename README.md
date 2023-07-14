@@ -59,7 +59,7 @@ Conheça os principais conceitos e implementações de sua próxima API REST com
 
 - 6 O que são WebServices?
  
-![Webservices](img/webservices_1.png)
+![Webservices](/img/webservices_1.png)
 
   - SOAP - WSDL
   - REST
@@ -68,19 +68,19 @@ Conheça os principais conceitos e implementações de sua próxima API REST com
   
 - 7 Webservices X APIs
 
-![API](img/api_1.png)
+![API](/img/api_1.png)
 
 - 8 REST: O que é?
 
-![REST](img/rest_1.png)
+![REST](/img/rest_1.png)
 
-![REST](img/rest_2.png)
+![REST](/img/rest_2.png)
 
-![REST](img/rest_3.png)
+![REST](/img/rest_3.png)
 
 - 9 Conhecendo mais o REST por meio do consumo de uma API REST
 
-![](img/api-rest-1.png)
+![](/img/api-rest-1.png)
 
 [Voltar ao Índice](#indice)
 
@@ -92,6 +92,7 @@ Conheça os principais conceitos e implementações de sua próxima API REST com
 - 10 Iniciando API com Laravel
 
   - [api-01-app](api-01-app)
+  - [Revisão - api-03-app](/api-03-app)
 
 - [api-01-app/routes/api.php](api-01-app/routes/api.php)
 
@@ -329,7 +330,7 @@ Resource collection created successfully.
 
 ```
 
-![](img/resource-collection.png)
+![](/img/resource-collection.png)
 
 - [api-01-app/app/Providers/AppServiceProvider.php](api-01-app/app/Providers/AppServiceProvider.php)
 
