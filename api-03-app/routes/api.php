@@ -1,6 +1,9 @@
 <?php
 
+use App\Http\Controllers\Api\ProductController;
+use App\Models\Product;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,11 +23,17 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::get('/test', function () {
     // return ['msg'=> 'Minha primeira resposta de API'];
-    $response = new \Illuminate\Http\Response(json_encode(['msg'=> 'Minha primeira resposta de API']));
+    $response = new Response(json_encode(['msg'=> 'Minha primeira resposta de API']));
     $response->header('Content-Type', 'application/json');
     return $response;
 });
 
-Route::get('/products', function () {
-    return \App\Models\Product::all();
+//Route::get('/products', function () {
+//    return Product::all();
+//});
+
+Route::namespace('Api')->group(function () {
+
+    Route::get('/products', [ProductController::class, 'index']);
+
 });
