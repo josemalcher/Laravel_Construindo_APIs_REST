@@ -24,3 +24,7 @@ Route::get('/test', function () {
     $response->header('Content-Type', 'application/json');
     return $response;
 });
+
+Route::get('/products', function () {
+    return \App\Models\Product::all();
+});

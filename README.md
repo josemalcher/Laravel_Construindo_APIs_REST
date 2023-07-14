@@ -113,6 +113,15 @@ Route::get('/test', function (Request $request){
 
 - 11 Configurando base para API
 
+```shell
+$ sail php artisan make:migration create_table_products --create=products
+
+   INFO  Migration [database/migrations/2023_07_14_205236_create_table_products.php] created successfully.  
+```
+
+
+
+
 - 12 Criando Primeiro Endpoint
 
 - 13 Criando & Recuperando Produto
