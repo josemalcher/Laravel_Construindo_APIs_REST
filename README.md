@@ -112,7 +112,7 @@ Route::get('/test', function (Request $request){
 ```
 
 - 11 Configurando base para API
-
+ 
 - 12 Criando Primeiro Endpoint
 
 - 13 Criando & Recuperando Produto

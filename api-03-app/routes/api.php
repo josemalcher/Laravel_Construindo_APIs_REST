@@ -32,8 +32,10 @@ Route::get('/test', function () {
 //    return Product::all();
 //});
 
-Route::namespace('Api')->group(function () {
+Route::namespace('Api')->prefix('products')->group(function () {
 
-    Route::get('/products', [ProductController::class, 'index']);
+    Route::get('/',      [ProductController::class, 'index']);
+    Route::get('/{id}',  [ProductController::class, 'show']);
+    Route::post('/',     [ProductController::class, 'save']);
 
 });
