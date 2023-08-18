@@ -21,7 +21,8 @@ class ProductController extends Controller
 
     public function index()
     {
-        $products = $this->product->all();
+        // $products = $this->product->all();
+        $products = $this->product->paginate(2);
 
         return response()->json($products);
     }
@@ -30,6 +31,7 @@ class ProductController extends Controller
     {
         $product = $this->product->find($id);
 
+
         return response()->json($product);
     }
 
@@ -37,9 +39,11 @@ class ProductController extends Controller
     {
         $data = $request->all();
 
-        $product = $this->product->create($data);
+        $data['Baeare'] = $request->headers->get('Baeare');
 
-        return response()->json($product);
+        // $product = $this->product->create($data);
+
+        return response()->json($data);
     }
 
     public function update(Request  $request)
@@ -50,6 +54,14 @@ class ProductController extends Controller
         $product->update($data);
 
         return response()->json($product);
+    }
+
+    public function delete($id)
+    {
+        $product = $this->product->find($id);
+        $product->delete();
+
+        return response()->json(['data' =>[ 'msg' => 'Produto removido com sucesso']]);
     }
 
 

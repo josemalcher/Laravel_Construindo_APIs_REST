@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Api\ProductController;
+use App\Http\Controllers\Api\UserController;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
@@ -32,12 +33,17 @@ Route::get('/test', function () {
 //    return Product::all();
 //});
 
-Route::namespace('Api')->prefix('products')->group(function () {
+Route::namespace('App\Http\Controllers\Api')->group(function () {
 
-    Route::get('/',      [ProductController::class, 'index']);
-    Route::get('/{id}',  [ProductController::class, 'show']);
-    Route::post('/',     [ProductController::class, 'save']);
-    Route::put('/',      [ProductController::class, 'update']);
-    Route::patch('/',      [ProductController::class, 'update']);
+    Route::prefix('products')->group(function () {
+        Route::get('/',         [ProductController::class, 'index']);
+        Route::get('/{id}',     [ProductController::class, 'show']);
+        Route::post('/',        [ProductController::class, 'save']);
+        Route::put('/',         [ProductController::class, 'update']);
+        Route::patch('/',       [ProductController::class, 'update']);
+        Route::delete('/{id}',  [ProductController::class, 'delete']);
+    });
+
+    Route::resource('/users', UserController::class);
 
 });
