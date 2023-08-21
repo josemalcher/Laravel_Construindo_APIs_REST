@@ -36,7 +36,7 @@ Route::get('/test', function () {
 Route::namespace('App\Http\Controllers\Api')->group(function () {
 
     Route::prefix('products')->group(function () {
-        Route::get('/',         [ProductController::class, 'index'])->middleware('auth.basic');
+        Route::get('/',         [ProductController::class, 'index']);
         Route::get('/{id}',     [ProductController::class, 'show']);
         Route::post('/',        [ProductController::class, 'save'])->middleware('auth.basic');
         Route::put('/',         [ProductController::class, 'update']);
