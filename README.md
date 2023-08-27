@@ -589,7 +589,37 @@ public function index(Request $request)
 
 ## <a name="parte6">6 - Seção 6: Api REST: Validações</a>
 
+- 27 - Introdução
+- 28 - Iniciando Validações
 
+```
+ $sail php artisan make:request ProductRequest    
+
+   INFO  Request [app/Http/Requests/ProductRequest.php] created successfully.
+
+```
+
+```php
+class ProductRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+    public function rules(): array
+    {
+        return [
+            'name'        => 'required',
+            'price'       => 'required',
+            'description' => 'required',
+            'slug'        => 'required'
+        ];
+    }
+```
+
+- 29 - Retornando Validações em JSON
+- 30 - Status Code HTTP
+- 31 - Conclusões
 
 [Voltar ao Índice](#indice)
 
