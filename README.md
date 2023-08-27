@@ -628,7 +628,12 @@ class ProductRequest extends FormRequest
 
 ## <a name="parte7">7 - Seção 7: [Projeto] - Configurando Projeto</a>
 
-
+32 - Conhecendo o Projeto
+33 - Iniciando Projeto MeuImovel
+34 - Configurando BD & Iniciando Migrations
+35 - Preparando Migrações das Tabelas
+36 - Criando Associações & Relacionamentos
+37 - Tabela Pivot & Executando Migrações, Concluindo Etapa
 
 [Voltar ao Índice](#indice)
 
