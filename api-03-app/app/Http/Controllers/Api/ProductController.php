@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Resources\ProductCollection;
 use App\Http\Resources\ProductResource;
 use App\Models\Product;
+use App\Repository\ProductRepository;
 use Illuminate\Http\Request;
 
 class ProductController extends Controller
@@ -25,22 +26,18 @@ class ProductController extends Controller
     {
         $products = $this->product;
 
+        $productRepository = new ProductRepository($products);
+
         if ($request->has('conditions')) {
-            $expressions = explode(';', $request->get('conditions'));
-            foreach ($expressions as $e) {
-                $exp = explode(':', $e);
-                $products = $products->where($exp[0], $exp[1], $exp[2]);
-            }
+            $productRepository->selectConditions($request->get('conditions'));
         }
 
         if ($request->has('fields')) {
-            $fields = $request->get('fields');
-            $products = $products->selectRaw($fields);
+            $productRepository->selectFilter($request->get('fields'));
         }
 
-        //$products = $this->product->paginate(4);
-        //return response()->json($products);
-        return new ProductCollection($products->paginate(5));
+
+        return new ProductCollection($productRepository->getResult()->paginate(5));
     }
 
     public function show($id)
@@ -62,7 +59,7 @@ class ProductController extends Controller
         return response()->json($data);
     }
 
-    public function update(Request  $request)
+    public function update(Request $request)
     {
         $data = $request->all();
 
@@ -77,7 +74,7 @@ class ProductController extends Controller
         $product = $this->product->find($id);
         $product->delete();
 
-        return response()->json(['data' =>[ 'msg' => 'Produto removido com sucesso']]);
+        return response()->json(['data' => ['msg' => 'Produto removido com sucesso']]);
     }
 
 
