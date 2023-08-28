@@ -6,23 +6,25 @@ Conheça os principais conceitos e implementações de sua próxima API REST com
 
 ## <a name="indice">Índice</a>
 
-1. [Seção 1: Módulo 0](#parte1)
-2. [Seção 2: WebServices, APIs, REST Conceitos](#parte2)
-3. [Seção 3: Mão na Massa: Primeira API REST](#parte3)
-4. [Seção 4: Laravel: Recursos para APIs](#parte4)
-5. [Seção 5: APIs REST: Filtros](#parte5)
-6. [Seção 6: Api REST: Validações](#parte6)
-7. [Seção 7: [Projeto] - Configurando Projeto](#parte7)
-8. [Seção 8: [Projeto] - Endpoint de Imóveis](#parte8)
-9. [Seção 9: Endpoints: /users & /categories](#parte9)
-10. [Seção 10: Relacionamento Muitos para Muitos: Categ…](#parte10)
-11. [Seção 11: Relacionamento Usuário e Perfil](#parte11)
-12. [Seção 12: Imóvel: Upload de Imagens](#parte12)
-13. [Seção 13: Conhecendo o JWT (Json Web Token)](#parte13)
-14. [Seção 14: Autenticação & JWT em Nossa API de Imó…](#parte14)
-15. [Seção 15: Busca de Imóveis](#parte15)
-16. [Seção 16: Conclusões](#parte16)
-17. [Seção 17: Extra: Migrando Versões Laravel](#parte17)
+- [Laravel: Construindo APIs REST](#laravel-construindo-apis-rest)
+  - [Índice](#índice)
+  - [1 - Seção 1: Módulo 0](#1---seção-1-módulo-0)
+  - [2 - Seção 2: WebServices, APIs, REST Conceitos](#2---seção-2-webservices-apis-rest-conceitos)
+  - [3 - Seção 3: Mão na Massa: Primeira API REST](#3---seção-3-mão-na-massa-primeira-api-rest)
+  - [4 - Seção 4: Laravel: Recursos para APIs](#4---seção-4-laravel-recursos-para-apis)
+  - [5 - Seção 5: APIs REST: Filtros](#5---seção-5-apis-rest-filtros)
+  - [6 - Seção 6: Api REST: Validações](#6---seção-6-api-rest-validações)
+  - [7 - Seção 7: \[Projeto\] - Configurando Projeto](#7---seção-7-projeto---configurando-projeto)
+  - [8 - Seção 8: \[Projeto\] - Endpoint de Imóveis](#8---seção-8-projeto---endpoint-de-imóveis)
+  - [9 - Seção 9: Endpoints: /users \& /categories](#9---seção-9-endpoints-users--categories)
+  - [10 - Seção 10: Relacionamento Muitos para Muitos: Categ…](#10---seção-10-relacionamento-muitos-para-muitos-categ)
+  - [11 - Seção 11: Relacionamento Usuário e Perfil](#11---seção-11-relacionamento-usuário-e-perfil)
+  - [12 - Seção 12: Imóvel: Upload de Imagens](#12---seção-12-imóvel-upload-de-imagens)
+  - [13 - Seção 13: Conhecendo o JWT (Json Web Token)](#13---seção-13-conhecendo-o-jwt-json-web-token)
+  - [14 - Seção 14: Autenticação \& JWT em Nossa API de Imó…](#14---seção-14-autenticação--jwt-em-nossa-api-de-imó)
+  - [15 - Seção 15: Busca de Imóveis](#15---seção-15-busca-de-imóveis)
+  - [16 - Seção 16: Conclusões](#16---seção-16-conclusões)
+  - [17 - Seção 17: Extra: Migrando Versões Laravel](#17---seção-17-extra-migrando-versões-laravel)
 ---
 
 
@@ -640,6 +642,26 @@ curl -s "https://laravel.build/meuImovel?with=mysql" | bash
 ```
 
 - 34 - Configurando BD & Iniciando Migrations
+
+```
+ sail php artisan make:migration create_table_real_state --create=real_state        
+
+   INFO  Migration [database/migrations/2023_08_28_114624_create_table_real_state.php] created successfully. 
+
+sail php artisan make:migration create_table_categories --create=categories
+
+   INFO  Migration [database/migrations/2023_08_28_114732_create_table_categories.php] created successfully. 
+
+sail php artisan make:migration create_table_real_state_photos --create=real_state_photos 
+
+   INFO  Migration [database/migrations/2023_08_28_114901_create_table_real_state_photos.php] created successfully.
+
+sail php artisan make:migration create_table_user_profile --create=user_profile
+
+   INFO  Migration [database/migrations/2023_08_28_114950_create_table_user_profile.php] created successfully.
+```
+
+
 - 35 - Preparando Migrações das Tabelas
 - 36 - Criando Associações & Relacionamentos
 - 37 - Tabela Pivot & Executando Migrações, Concluindo Etapa
