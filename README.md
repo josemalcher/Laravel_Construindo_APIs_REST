@@ -633,6 +633,12 @@ class ProductRequest extends FormRequest
 ![img/api_db_mobiliaria.png](img/api_db_mobiliaria.png)
 
 - 33 - Iniciando Projeto MeuImovel
+
+```
+curl -s "https://laravel.build/meuImovel?with=mysql" | bash
+
+```
+
 - 34 - Configurando BD & Iniciando Migrations
 - 35 - Preparando Migrações das Tabelas
 - 36 - Criando Associações & Relacionamentos
