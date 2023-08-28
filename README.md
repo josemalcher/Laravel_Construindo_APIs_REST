@@ -666,6 +666,95 @@ sail php artisan make:migration create_table_user_profile --create=user_profile
 - 36 - Criando Associações & Relacionamentos
 - 37 - Tabela Pivot & Executando Migrações, Concluindo Etapa
 
+```
+ sail php artisan make:migration create_table_real_state_categories --create=real_state_
+categories
+
+   INFO  Migration [database/migrations/2023_08_28_232448_create_table_real_state_categories.php] created successfully. 
+```
+
+```php
+Schema::create('real_state', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('user_id');
+
+            $table->string('title');
+            $table->string('description');
+            $table->text('content');
+            $table->float('price', 10, 2);
+            $table->integer('bathrooms');
+            $table->integer('dedrooms');
+            $table->integer('property_area');
+            $table->integer('total_property_area');
+            $table->string('slug');
+
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+
+        });
+```
+
+```php
+Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+
+            $table->string('name');
+            $table->string('description');
+            $table->string('slug');
+
+            $table->timestamps();
+        });
+```
+
+```php
+Schema::create('real_state_photos', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('real_state_id');
+
+            $table->string('photo');
+            $table->boolean('is_thumb');
+
+            $table->timestamps();
+
+            $table->foreign('real_state_id')->references('id')->on('real_state');
+        });
+```
+
+```php
+Schema::create('user_profile', function (Blueprint $table) {
+            $table->id();
+
+            $table->unsignedBigInteger('user_id');
+
+            $table->text('about')->nullable(true);
+            $table->text('social_networks')->nullable(true);
+            $table->string('phone')->nullable(true);
+            $table->string('mobile_phone')->nullable(true);
+
+            $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
+        });
+```
+
+```php
+Schema::create('real_state_categories', function (Blueprint $table) {
+            // $table->id();
+            // $table->timestamps();
+
+            $table->unsignedBigInteger('real_state_id');
+            $table->unsignedBigInteger('category_id');
+
+            $table->foreign('real_state_id')->references('id')->on('real_state');
+            $table->foreign('category_id')->references('id')->on('categories');
+
+
+        });
+```
+
 [Voltar ao Índice](#indice)
 
 ---
