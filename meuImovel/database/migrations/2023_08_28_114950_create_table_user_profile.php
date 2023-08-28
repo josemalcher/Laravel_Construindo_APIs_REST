@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('user_profile', function (Blueprint $table) {
             $table->id();
+
+            $table->text('about')->nullable(true);
+            $table->text('social_networks')->nullable(true);
+            $table->string('phone')->nullable(true);
+            $table->string('mobile_phone')->nullable(true);
+
             $table->timestamps();
         });
     }
