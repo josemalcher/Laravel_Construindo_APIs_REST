@@ -1,9 +1,8 @@
 <?php
 
-use App\Http\Controllers\Api\RealStateController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\Api\{RealStateController};
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -21,6 +20,6 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::prefix('v1')->namespace('Api')->group(function () {
     Route::prefix('real-states')->name('real_states.')->group(function () {
-        Route::get('/', [RealStateController::class, 'index'])->name('index'); // api/v1/real-states/
+        Route::resource('/', '\App\Http\Controllers\Api\RealStateController'); // api/v1/real-states/
     });
 });
