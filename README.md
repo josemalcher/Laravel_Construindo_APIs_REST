@@ -839,6 +839,47 @@ Route::prefix('v1')->namespace('Api')->group(function () {
 
 - 39 Endpoint para Criação de Um Imóvel
 - 40 Endpoint para Criação de Um Imóvel pt. 2
+
+```php
+class RealState extends Model
+{
+    use HasFactory;
+
+    protected $table = 'real_state';
+
+    protected $fillable = [
+        'user_id', 'title', 'description', 'content', 'price',
+        'slug', 'dedrooms', 'bathrooms', 'property_area', 'total_property_area'
+
+    ];
+    public function user()
+    {
+        // return $this->belongsTo(User::class, 'user_id'); // com foregin id
+
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+```php
+public function store(Request $request)
+    {
+        $data = $request->all();
+        try {
+
+            $this->realState->create($data);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Imóvel Cadastrado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage(), 401]);
+        }
+    }
+```
+
 - 41 Endpoint para Atualização de Um Imóvel
 - 42 Endpoints para Recuperar & Deletar um Imóvel
 - 43 Form Request com Validações Imóveis

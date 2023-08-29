@@ -10,6 +10,7 @@ class RealStateController extends Controller
 {
 
     private $realState;
+
     public function __construct(RealState $realState)
     {
         $this->realState = $realState;
@@ -24,6 +25,18 @@ class RealStateController extends Controller
 
     public function store(Request $request)
     {
-        return response()->json($request->all(), 200);
+        $data = $request->all();
+        try {
+
+            $this->realState->create($data);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Imóvel Cadastrado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage(), 401]);
+        }
     }
 }
