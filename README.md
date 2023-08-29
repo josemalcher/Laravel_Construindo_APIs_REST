@@ -881,6 +881,38 @@ public function store(Request $request)
 ```
 
 - 41 Endpoint para Atualização de Um Imóvel
+
+```php
+Route::prefix('v1')->namespace('Api')->group(function () {
+    Route::name('real_states.')->group(function () {
+        Route::resource('real-states', '\App\Http\Controllers\Api\RealStateController'); 
+    });
+});
+
+```
+
+```php
+public function update($id, Request $request)
+    {
+        $data = $request->all();
+
+        try {
+
+            $realState = $this->realState->findOrFail($id);
+
+            $realState->update($data);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Imóvel Atualizado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            return response()->json(['error' => $e->getMessage(), 401]);
+        }
+    }
+```
+
 - 42 Endpoints para Recuperar & Deletar um Imóvel
 - 43 Form Request com Validações Imóveis
 - 44 ApiMessages para mensagens de Erro & Concluindo
