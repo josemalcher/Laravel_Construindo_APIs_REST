@@ -916,6 +916,37 @@ public function update($id, Request $request)
 
 - 42 Endpoints para Recuperar & Deletar um Imóvel
 - 43 Form Request com Validações Imóveis
+
+```
+ sail php artisan make:request RealStateRequest
+
+   INFO  Request [app/Http/Requests/RealStateRequest.php] created successfully.
+```
+
+```php
+class RealStateRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            'title' => 'required',
+            'description' => 'required',
+            'content' => 'required',
+            'price' => 'required',
+            'dedrooms' => 'required',
+            'bathrooms' => 'required',
+            'property_area' => 'required',
+            'total_property_area' => 'required'
+        ];
+    }
+```
+
+
 - 44 ApiMessages para mensagens de Erro & Concluindo
 
 [Voltar ao Índice](#indice)
