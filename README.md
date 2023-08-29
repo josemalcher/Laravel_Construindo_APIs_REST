@@ -762,7 +762,87 @@ Schema::create('real_state_categories', function (Blueprint $table) {
 
 ## <a name="parte8">8 - Seção 8: [Projeto] - Endpoint de Imóveis</a>
 
+- 38 Inciando Endpoint
 
+```
+sail php artisan make:model RealState   
+
+   INFO  Model [app/Models/RealState.php] created successfully.  
+
+ sail php artisan make:controller Api/RealStateController            
+
+   INFO  Controller [app/Http/Controllers/Api/RealStateController.php] created successfully.
+
+```
+
+```php
+namespace App\Models;
+
+use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
+
+class RealState extends Model
+{
+    use HasFactory;
+
+    protected $table = 'real_state';
+    public function user()
+    {
+        // return $this->belongsTo(User::class, 'user_id'); // com foregin id
+
+        return $this->belongsTo(User::class);
+    }
+}
+```
+
+```php
+namespace App\Models;
+class User extends Authenticatable
+{
+    public function real_state()
+    {
+        return $this->hasMany(RealState::class);
+    }
+}
+```
+
+```php
+namespace App\Http\Controllers\Api;
+
+class RealStateController extends Controller
+{
+    private $realState;
+    public function __construct(RealState $realState)
+    {
+        $this->realState = $realState;
+    }
+
+    public function index()
+    {
+        $realState = $this->realState->paginate('10');
+
+        return response()->json($realState, 200);
+    }
+}
+
+```
+
+```php
+Route::prefix('v1')->namespace('Api')->group(function () {
+    Route::prefix('real-states')->name('real_states.')->group(function () {
+        Route::get('/', [RealStateController::class, 'index'])->name('index'); // api/v1/real-states/
+    });
+});
+
+```
+
+
+- 39 Endpoint para Criação de Um Imóvel
+- 40 Endpoint para Criação de Um Imóvel pt. 2
+- 41 Endpoint para Atualização de Um Imóvel
+- 42 Endpoints para Recuperar & Deletar um Imóvel
+- 43 Form Request com Validações Imóveis
+- 44 ApiMessages para mensagens de Erro & Concluindo
 
 [Voltar ao Índice](#indice)
 
