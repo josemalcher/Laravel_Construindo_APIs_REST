@@ -949,6 +949,45 @@ class RealStateRequest extends FormRequest
 
 - 44 ApiMessages para mensagens de Erro & Concluindo
 
+```php
+class ApiMessages
+{
+    private $message = [];
+
+    public function __construct(string $message, array $data = [])
+    {
+        $this->message['message'] = $message;
+        $this->message['errors'] = $data;
+    }
+
+    public function getMessage()
+    {
+        return $this->message;
+    }
+}
+```
+
+```php
+public function store(RealStateRequest $request)
+    {
+        $data = $request->all();
+        try {
+
+            $this->realState->create($data);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Imóvel Cadastrado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+```
+
+
 [Voltar ao Índice](#indice)
 
 ---
