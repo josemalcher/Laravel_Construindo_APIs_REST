@@ -1096,6 +1096,18 @@ class UserController extends Controller
 
 46 - Endpoint de Categorias
 
+```
+ sail php artisan make:controller Api/CategoryController --resource --api
+
+   INFO  Controller [app/Http/Controllers/Api/CategoryController.php] created successfully.
+
+sail php artisan make:model Category                                    
+
+   INFO  Model [app/Models/Category.php] created successfully.
+
+```
+
+
 [Voltar ao Índice](#indice)
 
 ---

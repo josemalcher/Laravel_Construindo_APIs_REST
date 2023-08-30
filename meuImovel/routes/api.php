@@ -4,7 +4,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\{
     RealStateController,
-    UserController
+    UserController,
+    CategoryController
 };
 /*
 |--------------------------------------------------------------------------
@@ -27,6 +28,10 @@ Route::prefix('v1')->namespace('Api')->group(function () {
     });
 
     Route::name('users.')->group(function () {
-        Route::resource('users', '\App\Http\Controllers\Api\UserController'); // api/v1/real-states/
+        Route::resource('users', '\App\Http\Controllers\Api\UserController');
+    });
+
+    Route::name('categories.')->group(function () {
+        Route::resource('categories', '\App\Http\Controllers\Api\CategoryController');
     });
 });
