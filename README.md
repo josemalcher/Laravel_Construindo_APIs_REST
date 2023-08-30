@@ -996,6 +996,104 @@ public function store(RealStateRequest $request)
 ## <a name="parte9">9 - Seção 9: Endpoints: /users & /categories</a>
 
 45 - Endpoint de Usuários
+
+```
+sail php artisan make:controller Api/UserController --resource --api
+
+   INFO  Controller [app/Http/Controllers/Api/UserController.php] created successfully.  
+
+```
+
+```
+sail php artisan make:request UserRequest                           
+
+   INFO  Request [app/Http/Requests/UserRequest.php] created successfully.  
+
+```
+
+```php
+class UserRequest extends FormRequest
+{
+    public function authorize(): bool
+    {
+        return true;
+    }
+
+    public function rules(): array
+    {
+        return [
+            [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['string', 'max:255', 'min:8', 'confirmed'],
+            ]
+        ];
+    }
+}
+```
+
+```php
+<?php
+namespace App\Http\Controllers\Api;
+class UserController extends Controller
+{
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        if (!$request->has('password') || !$request->get('password')) {
+            $message = new ApiMessages('É necessário informar uma SENHA para o Usuário');
+            return response()->json($message->getMessage(), 401);
+        }
+
+        try {
+
+            $data['password'] = bcrypt($data['password']);
+
+            $user = $this->user->create($data);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Usuário Cadastrado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+
+
+    public function update(Request $request, int $id)
+    {
+        $data = $request->all();
+
+        if ($request->has('password') && $request->get('password')) {
+            $data['password'] = bcrypt($data['password']);
+        }else{
+            unset($data['password']);
+        }
+
+        try {
+
+            $user = $this->user->findOrFail($id);
+
+            $user->update($data);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Usuário Atualizado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+
+```
+
+
 46 - Endpoint de Categorias
 
 [Voltar ao Índice](#indice)
