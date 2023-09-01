@@ -45,7 +45,11 @@ class RealStateController extends Controller
         $data = $request->all();
         try {
 
-            $this->realState->create($data);
+            $realState = $this->realState->create($data);
+
+            if (isset($data['categories']) && count($data['categories'])) {
+                $realState->categories()->sync($data['categories']);
+            }
 
             return response()->json([
                 'data' => [
@@ -65,8 +69,11 @@ class RealStateController extends Controller
         try {
 
             $realState = $this->realState->findOrFail($id);
-
             $realState->update($data);
+
+            if (isset($data['categories']) && count($data['categories'])) {
+                $realState->categories()->sync($data['categories']);
+            }
 
             return response()->json([
                 'data' => [
