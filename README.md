@@ -1119,6 +1119,38 @@ sail php artisan make:model Category
 48 - Salvando & Atualizando Relação
 49 - Recuperando Imóveis por Categorias
 
+```php
+    Route::name('categories.')->group(function () {
+        Route::get('categories/{id}/real-states', [CategoryController::class, 'realState']);
+        Route::resource('categories', '\App\Http\Controllers\Api\CategoryController');
+    });
+```
+
+```php
+<?php
+
+class CategoryController extends Controller
+{
+    // ...
+    public function realState(int $id  )
+    {
+        try{
+            $category = $this->category->findOrFail($id);
+
+            return response()->json([
+                'data' => $category->realStates
+            ], 200);
+
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+}
+
+```
+
+
 [Voltar ao Índice](#indice)
 
 ---
