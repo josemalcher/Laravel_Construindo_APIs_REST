@@ -1115,9 +1115,9 @@ sail php artisan make:model Category
 
 ## <a name="parte10">10 - Seção 10: Relacionamento Muitos para Muitos: Categ…</a>
 
-47 - Iniciando Relação Models Imóveis e Categorias
-48 - Salvando & Atualizando Relação
-49 - Recuperando Imóveis por Categorias
+- 47 Iniciando Relação Models Imóveis e Categorias
+- 48 Salvando & Atualizando Relação
+- 49 Recuperando Imóveis por Categorias
 
 ```php
     Route::name('categories.')->group(function () {
@@ -1158,10 +1158,10 @@ class CategoryController extends Controller
 
 ## <a name="parte11">11 - Seção 11: Relacionamento Usuário e Perfil</a>
 
-50 - Mapeando Relação
-51 - Criando Perfil do Usuário
-52 - Atualizando Perfil do Usuário
-53 - Recuperando Usuário com Perfil
+- 50 Mapeando Relação
+- 51 Criando Perfil do Usuário
+- 52 Atualizando Perfil do Usuário
+- 53 Recuperando Usuário com Perfil
 
 [Voltar ao Índice](#indice)
 
@@ -1170,11 +1170,11 @@ class CategoryController extends Controller
 
 ## <a name="parte12">12 - Seção 12: Imóvel: Upload de Imagens</a>
 
-54 - Iniciando Relação entre Imóveis e Fotos
-55 - Realizando Upload de Fotos
-56 - Salvando & Atualizando Relação Imóveis e Fotos
-57 - Endpoint para Thumb & Remoção de Imagens
-58 - Exibindo Imagens na Single do Imóvel
+- 54 Iniciando Relação entre Imóveis e Fotos
+- 55 Realizando Upload de Fotos
+- 56 Salvando & Atualizando Relação Imóveis e Fotos
+- 57 Endpoint para Thumb & Remoção de Imagens
+- 58 Exibindo Imagens na Single do Imóvel
 
 [Voltar ao Índice](#indice)
 
@@ -1183,9 +1183,9 @@ class CategoryController extends Controller
 
 ## <a name="parte13">13 - Seção 13: Conhecendo o JWT (Json Web Token)</a>
 
-59 - Conhecendo o JWT
-60 - Criando Primeiro Token JWT
-61 - Como Usar o JWT
+- 59 Conhecendo o JWT
+- 60 Criando Primeiro Token JWT
+- 61 Como Usar o JWT
 
 [Voltar ao Índice](#indice)
 
@@ -1194,15 +1194,15 @@ class CategoryController extends Controller
 
 ## <a name="parte14">14 - Seção 14: Autenticação & JWT em Nossa API de Imó…</a>
 
-62 - Instalando Pacote JWT no Laravel
-63 - Conhecendo Configurações do Pacote
-64 - Configurando User & Driver JWT
-65 - Endpoint Login & Gerando Token
-66 - Protegendo Rotas Para Autorização
-67 - Invalidando & Atualizando Token
-68 - Validações no Login
-69 - Retornando Imóveis por Usuário
-70 - Conclusões
+- 62 Instalando Pacote JWT no Laravel
+- 63 Conhecendo Configurações do Pacote
+- 64 Configurando User & Driver JWT
+- 65 Endpoint Login & Gerando Token
+- 66 Protegendo Rotas Para Autorização
+- 67 Invalidando & Atualizando Token
+- 68 Validações no Login
+- 69 Retornando Imóveis por Usuário
+- 70 Conclusões
 
 [Voltar ao Índice](#indice)
 
@@ -1211,15 +1211,15 @@ class CategoryController extends Controller
 
 ## <a name="parte15">15 - Seção 15: Busca de Imóveis</a>
 
-71 - Iniciando Migrations de Localização
-72 - Migration de Endereços
-73 - Relação entre Models de Localidade
-74 - Expondo Endpoint de Busca
-75 - Busca de Imóveis
-76 - Relação de Imóveis & Endereços
-77 - Imóveis por Localidades
-78 - Concluindo Imóveis por Localidades
-79 - Single Pública Imóvei & Concluindo
+- 71 Iniciando Migrations de Localização
+- 72 Migration de Endereços
+- 73 Relação entre Models de Localidade
+- 74 Expondo Endpoint de Busca
+- 75 Busca de Imóveis
+- 76 Relação de Imóveis & Endereços
+- 77 Imóveis por Localidades
+- 78 Concluindo Imóveis por Localidades
+- 79 Single Pública Imóvei & Concluindo
 
 [Voltar ao Índice](#indice)
 
@@ -1228,11 +1228,11 @@ class CategoryController extends Controller
 
 ## <a name="parte16">16 - Seção 16: Conclusões</a>
 
-80 - Intro
-81 - Negociação de Conteúdo
-82 - HATEOAS
-83 - Thumb do Imóvel
-84 - Obrigado!
+- 80 Intro
+- 81 Negociação de Conteúdo
+- 82 HATEOAS
+- 83 Thumb do Imóvel
+- 84 Obrigado!
 
 [Voltar ao Índice](#indice)
 
@@ -1241,8 +1241,8 @@ class CategoryController extends Controller
 
 ## <a name="parte17">17 - Seção 17: Extra: Migrando Versões Laravel</a>
 
-85 - Migrando para o Laravel
-86 - Migrando para o Laravel 7
+- 85 Migrando para o Laravel
+- 86 Migrando para o Laravel 7
 
 ## Ver composer.json das pastas!
 
