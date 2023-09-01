@@ -1159,6 +1159,38 @@ class CategoryController extends Controller
 ## <a name="parte11">11 - Seção 11: Relacionamento Usuário e Perfil</a>
 
 - 50 Mapeando Relação
+
+```
+ sail php artisan make:model UserProfile      
+
+   INFO  Model [app/Models/UserProfile.php] created successfully.
+
+```
+
+```php
+class UserProfile extends Model
+{
+    use HasFactory;
+
+    protected $fillable = ['about', 'social_networks', 'phone', 'mobile_phone'];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+```
+
+```php
+class User extends Authenticatable
+{
+//...
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class);
+    }
+}
+```
+
 - 51 Criando Perfil do Usuário
 - 52 Atualizando Perfil do Usuário
 - 53 Recuperando Usuário com Perfil
