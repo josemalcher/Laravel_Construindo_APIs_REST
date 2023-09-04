@@ -1208,7 +1208,7 @@ class UserController extends Controller
         Validator::make($data, [
             'phone' => 'required',
             'mobile_phone' => 'required'
-        ]);
+        ])->validate();
 
         try {
 
@@ -1255,7 +1255,7 @@ class UserController extends Controller
         Validator::make($data, [
             'profile.phone' => 'required',
             'profile.mobile_phone' => 'required'
-        ]);
+        ])->validate();
 
         try {
 
@@ -1281,6 +1281,27 @@ class UserController extends Controller
 ```
 
 - 53 Recuperando Usuário com Perfil
+
+```php
+class UserController extends Controller
+{
+    public function show(int $id)
+    {
+        try {
+
+            $user = $this->user->with('profile')->findOrFail($id);
+            $user->profile->social_networks = unserialize($user->profile->social_networks);
+
+
+            return response()->json([
+                'data' => $user
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+```
 
 [Voltar ao Índice](#indice)
 
