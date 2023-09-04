@@ -1236,9 +1236,50 @@ class UserController extends Controller
 
 ```
 
-
-
 - 52 Atualizando Perfil do Usuário
+
+```php
+class UserController extends Controller
+{
+    // ...
+    public function update(Request $request, int $id)
+    {
+        $data = $request->all();
+
+        if ($request->has('password') && $request->get('password')) {
+            $data['password'] = bcrypt($data['password']);
+        }else{
+            unset($data['password']);
+        }
+
+        Validator::make($data, [
+            'profile.phone' => 'required',
+            'profile.mobile_phone' => 'required'
+        ]);
+
+        try {
+
+            $profile = $data['profile'];
+            $profile['social_networks'] = serialize($profile['social_networks']);
+
+            $user = $this->user->findOrFail($id);
+            $user->update($data);
+
+            $user->profile()->update($profile);
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Usuário Atualizado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+
+```
+
 - 53 Recuperando Usuário com Perfil
 
 [Voltar ao Índice](#indice)
