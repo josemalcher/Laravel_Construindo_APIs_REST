@@ -1311,6 +1311,14 @@ class UserController extends Controller
 ## <a name="parte12">12 - Seção 12: Imóvel: Upload de Imagens</a>
 
 - 54 Iniciando Relação entre Imóveis e Fotos
+
+```
+ sail php artisan make:model RealStatePhoto 
+
+   INFO  Model [app/Models/RealStatePhoto.php] created successfully.
+
+```
+
 - 55 Realizando Upload de Fotos
 - 56 Salvando & Atualizando Relação Imóveis e Fotos
 - 57 Endpoint para Thumb & Remoção de Imagens
