@@ -1192,6 +1192,52 @@ class User extends Authenticatable
 ```
 
 - 51 Criando Perfil do Usuário
+
+```php
+class UserController extends Controller
+{
+    public function store(Request $request)
+    {
+        $data = $request->all();
+
+        if (!$request->has('password') || !$request->get('password')) {
+            $message = new ApiMessages('É necessário informar uma SENHA para o Usuário');
+            return response()->json($message->getMessage(), 401);
+        }
+
+        Validator::make($data, [
+            'phone' => 'required',
+            'mobile_phone' => 'required'
+        ]);
+
+        try {
+
+            $data['password'] = bcrypt($data['password']);
+
+            $user = $this->user->create($data);
+
+            $user->profile()->create(
+                [
+                    'phone' => $data['phone'],
+                    'mobile_phone'=>$data['mobile_phone']
+                ]
+            );
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Usuário Cadastrado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+
+```
+
+
+
 - 52 Atualizando Perfil do Usuário
 - 53 Recuperando Usuário com Perfil
 
