@@ -1321,6 +1321,91 @@ class UserController extends Controller
 
 - 55 Realizando Upload de Fotos
 - 56 Salvando & Atualizando Relação Imóveis e Fotos
+
+```php
+class RealStateController extends Controller
+{
+//...
+    public function store(RealStateRequest $request)
+    {
+        $data = $request->all();
+
+        $images = $request->file('images');
+
+        try {
+
+            $realState = $this->realState->create($data);
+
+            // dd($request->file('images')); // dados imagens
+
+            if (isset($data['categories']) && count($data['categories'])) {
+                $realState->categories()->sync($data['categories']);
+            }
+
+            if ($images) {
+
+                $imagesUploaded = [];
+
+                foreach ($images as $image) {
+                    $path = $image->store('images', 'public');
+                    $imagesUploaded[] = ['photo'=> $path, 'is_thumb' => false];
+                }
+                // dd($imagesUploaded);
+                $realState->photos()->createMany($imagesUploaded);
+
+            }
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Imóvel Cadastrado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+
+    public function update($id, RealStateRequest $request)
+    {
+        $data = $request->all();
+
+        $images = $request->file('images');
+
+        try {
+
+            $realState = $this->realState->findOrFail($id);
+            $realState->update($data);
+
+            if (isset($data['categories']) && count($data['categories'])) {
+                $realState->categories()->sync($data['categories']);
+            }
+
+            if ($images) {
+
+                $imagesUploaded = [];
+
+                foreach ($images as $image) {
+                    $path = $image->store('images', 'public');
+                    $imagesUploaded[] = ['photo'=> $path, 'is_thumb' => false];
+                }
+                // dd($imagesUploaded);
+                $realState->photos()->createMany($imagesUploaded);
+
+            }
+
+            return response()->json([
+                'data' => [
+                    'msg' => 'Imóvel Atualizado com Sucesso'
+                ]
+            ], 200);
+        } catch (\Exception $e) {
+            $message = new ApiMessages($e->getMessage());
+            return response()->json($message->getMessage(), 401);
+        }
+    }
+```
+
 - 57 Endpoint para Thumb & Remoção de Imagens
 - 58 Exibindo Imagens na Single do Imóvel
 
