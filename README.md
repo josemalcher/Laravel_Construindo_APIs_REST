@@ -1407,6 +1407,13 @@ class RealStateController extends Controller
 ```
 
 - 57 Endpoint para Thumb & Remoção de Imagens
+
+```
+sail php artisan make:controller Api/RealStatePhotoController                    
+
+   INFO  Controller [app/Http/Controllers/Api/RealStatePhotoController.php] created successfully.
+```
+
 - 58 Exibindo Imagens na Single do Imóvel
 
 [Voltar ao Índice](#indice)
