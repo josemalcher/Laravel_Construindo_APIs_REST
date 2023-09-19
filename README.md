@@ -1424,6 +1424,32 @@ sail php artisan make:controller Api/RealStatePhotoController
 ## <a name="parte13">13 - Seção 13: Conhecendo o JWT (Json Web Token)</a>
 
 - 59 Conhecendo o JWT
+
+![](/img/jwt-1.png)
+
+![](/img/jwt-2.png)
+
+![](/img/jwt-3.png)
+
+![](/img/jwt-4.png)
+
+![](/img/jwt-5.png)
+
+![](/img/jwt-6.png)
+
+![](/img/jwt-7.png)
+
+![](/img/jwt-8.png)
+
+![](/img/jwt-9.png)
+
+![](/img/jwt-10.png)
+
+![](/img/jwt-11.png)
+
+![](/img/jwt-12.png)
+
+
 - 60 Criando Primeiro Token JWT
 - 61 Como Usar o JWT
 
