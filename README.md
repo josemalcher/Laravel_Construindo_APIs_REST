@@ -1451,6 +1451,9 @@ sail php artisan make:controller Api/RealStatePhotoController
 
 
 - 60 Criando Primeiro Token JWT
+
+    - [](/jwttest)
+
 - 61 Como Usar o JWT
 
 [Voltar ao Índice](#indice)

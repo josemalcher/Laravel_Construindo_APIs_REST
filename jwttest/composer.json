@@ -1,0 +1,18 @@
+{
+    "name": "josemalcher/jwttest",
+    "description": "JWT Test",
+    "autoload": {
+        "psr-4": {
+            "Josemalcher\\Jwttest\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "José Malcher Jr",
+            "email": "contato@josemalcher.net"
+        }
+    ],
+    "require": {
+        "lcobucci/jwt": "^5.0"
+    }
+}
